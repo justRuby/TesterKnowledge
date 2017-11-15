@@ -17,6 +17,7 @@ namespace Tester
         private int step = 0;
         private int countTrue = 0;
         private int selectAnswer = 0;
+        private int countTime = 1200; // 20 min
 
         public Main()
         {
@@ -107,6 +108,8 @@ namespace Tester
             {
                 errorRegistrationLabel.Visible = false;
                 testerTabControl.SelectedIndex = 1;
+                SetTimeLeft();
+                timer.Start();
             }
             else
             {
@@ -466,19 +469,6 @@ namespace Tester
                 Answer4 = "сравнивание методов",
                 TrueAnswer = 1
             });
-            ///////Вопрос 26
-            //questions.Add(26, new Questions()
-            //{
-            //    Question = "ICompare это интерфейс ......."
-            //});
-            //answers.Add(26, new Answers()
-            //{
-            //    Answer1 = "сортировки объектов",
-            //    Answer2 = "сортировки методов",
-            //    Answer3 = "сложение объектов",
-            //    Answer4 = "сравнивание методов",
-            //    TrueAnswer = 1
-            //});
         }
 
         private void ViewQuestionsAndAnswers()
@@ -525,6 +515,22 @@ namespace Tester
             step = 0;
             countTrue = 0;
             ViewQuestionsAndAnswers();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            SetTimeLeft();
+            if (countTime <= 0)
+            {
+                Finally();
+            }
+        }
+        
+        private void SetTimeLeft()
+        {
+            countTime--;
+            var time = TimeSpan.FromSeconds(countTime);
+            timeLabel.Text = string.Format("{0}:{1}", time.Minutes, time.Seconds);
         }
     }
 }

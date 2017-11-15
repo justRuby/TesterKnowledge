@@ -7,3 +7,4 @@ C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.
 C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.csproj.CoreCompileInputs.cache
 C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.exe
 C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.pdb
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.csprojResolveAssemblyReference.cache

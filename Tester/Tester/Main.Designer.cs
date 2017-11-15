@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.nameProgrammLabel = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.registrationTextBox = new System.Windows.Forms.TextBox();
             this.testingTabPage = new System.Windows.Forms.TabPage();
             this.testingPanel = new System.Windows.Forms.Panel();
+            this.questionsListBox = new System.Windows.Forms.RichTextBox();
             this.answerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.answer4RadioButton = new System.Windows.Forms.RadioButton();
             this.nextQuestionButton = new System.Windows.Forms.Button();
@@ -59,8 +61,9 @@
             this.resultTestLabel = new System.Windows.Forms.Label();
             this.countTruAnswersLabel = new System.Windows.Forms.Label();
             this.fullNameFinalLabel = new System.Windows.Forms.Label();
-            this.questionsListBox = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programImageButton)).BeginInit();
             this.testerTabControl.SuspendLayout();
@@ -184,7 +187,7 @@
             this.testerTabControl.Location = new System.Drawing.Point(7, 46);
             this.testerTabControl.Name = "testerTabControl";
             this.testerTabControl.SelectedIndex = 0;
-            this.testerTabControl.Size = new System.Drawing.Size(769, 363);
+            this.testerTabControl.Size = new System.Drawing.Size(769, 383);
             this.testerTabControl.TabIndex = 5;
             // 
             // registrationTabPage
@@ -285,23 +288,34 @@
             this.testingTabPage.Location = new System.Drawing.Point(4, 22);
             this.testingTabPage.Name = "testingTabPage";
             this.testingTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.testingTabPage.Size = new System.Drawing.Size(761, 337);
+            this.testingTabPage.Size = new System.Drawing.Size(761, 357);
             this.testingTabPage.TabIndex = 1;
             this.testingTabPage.Text = "Тестирование";
             this.testingTabPage.UseVisualStyleBackColor = true;
             // 
             // testingPanel
             // 
-            this.testingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.testingPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.testingPanel.Controls.Add(this.timeLabel);
             this.testingPanel.Controls.Add(this.questionsListBox);
             this.testingPanel.Controls.Add(this.answerTableLayoutPanel);
             this.testingPanel.Controls.Add(this.questionNumberLabel);
             this.testingPanel.Location = new System.Drawing.Point(30, 6);
             this.testingPanel.Name = "testingPanel";
-            this.testingPanel.Size = new System.Drawing.Size(700, 331);
+            this.testingPanel.Size = new System.Drawing.Size(700, 351);
             this.testingPanel.TabIndex = 1;
+            // 
+            // questionsListBox
+            // 
+            this.questionsListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.questionsListBox.BackColor = System.Drawing.Color.White;
+            this.questionsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.questionsListBox.Location = new System.Drawing.Point(30, 20);
+            this.questionsListBox.Name = "questionsListBox";
+            this.questionsListBox.ReadOnly = true;
+            this.questionsListBox.Size = new System.Drawing.Size(573, 99);
+            this.questionsListBox.TabIndex = 4;
+            this.questionsListBox.Text = "";
             // 
             // answerTableLayoutPanel
             // 
@@ -314,7 +328,7 @@
             this.answerTableLayoutPanel.Controls.Add(this.answer1RadioButton, 0, 0);
             this.answerTableLayoutPanel.Controls.Add(this.answer3RadioButton, 0, 2);
             this.answerTableLayoutPanel.Controls.Add(this.answer2RadioButton, 0, 1);
-            this.answerTableLayoutPanel.Location = new System.Drawing.Point(28, 131);
+            this.answerTableLayoutPanel.Location = new System.Drawing.Point(27, 125);
             this.answerTableLayoutPanel.Name = "answerTableLayoutPanel";
             this.answerTableLayoutPanel.RowCount = 4;
             this.answerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -426,7 +440,7 @@
             this.questionNumberLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionNumberLabel.AutoSize = true;
             this.questionNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.questionNumberLabel.Location = new System.Drawing.Point(28, 9);
+            this.questionNumberLabel.Location = new System.Drawing.Point(27, 0);
             this.questionNumberLabel.Name = "questionNumberLabel";
             this.questionNumberLabel.Size = new System.Drawing.Size(104, 17);
             this.questionNumberLabel.TabIndex = 1;
@@ -527,30 +541,36 @@
             this.fullNameFinalLabel.Text = "Поздравляю {FullName} с пройденым тестом!";
             this.fullNameFinalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // questionsListBox
-            // 
-            this.questionsListBox.BackColor = System.Drawing.Color.White;
-            this.questionsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.questionsListBox.Location = new System.Drawing.Point(31, 29);
-            this.questionsListBox.Name = "questionsListBox";
-            this.questionsListBox.ReadOnly = true;
-            this.questionsListBox.Size = new System.Drawing.Size(573, 99);
-            this.questionsListBox.TabIndex = 4;
-            this.questionsListBox.Text = "";
-            // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(1, 42);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(779, 40);
+            this.panel1.Size = new System.Drawing.Size(784, 30);
             this.panel1.TabIndex = 6;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeLabel.Location = new System.Drawing.Point(27, 325);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(31, 17);
+            this.timeLabel.TabIndex = 7;
+            this.timeLabel.Text = "__:__";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 421);
+            this.ClientSize = new System.Drawing.Size(784, 441);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.testerTabControl);
             this.Controls.Add(this.tableLayoutPanel);
@@ -613,6 +633,8 @@
         private System.Windows.Forms.RadioButton answer2RadioButton;
         private System.Windows.Forms.RichTextBox questionsListBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label timeLabel;
     }
 }
 
