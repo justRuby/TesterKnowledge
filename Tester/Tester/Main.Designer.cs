@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.fullScreenButton = new System.Windows.Forms.Button();
             this.nameProgrammLabel = new System.Windows.Forms.Label();
             this.programImageButton = new System.Windows.Forms.PictureBox();
             this.exitButton = new System.Windows.Forms.Button();
+            this.fullScreenButton = new System.Windows.Forms.Button();
             this.turnButton = new System.Windows.Forms.Button();
             this.testerTabControl = new System.Windows.Forms.TabControl();
             this.registrationTabPage = new System.Windows.Forms.TabPage();
@@ -47,12 +47,11 @@
             this.testingPanel = new System.Windows.Forms.Panel();
             this.answerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.answer4RadioButton = new System.Windows.Forms.RadioButton();
+            this.nextQuestionButton = new System.Windows.Forms.Button();
+            this.answer1RadioButton = new System.Windows.Forms.RadioButton();
             this.answer3RadioButton = new System.Windows.Forms.RadioButton();
             this.answer2RadioButton = new System.Windows.Forms.RadioButton();
-            this.answer1RadioButton = new System.Windows.Forms.RadioButton();
-            this.nextQuestionButton = new System.Windows.Forms.Button();
             this.questionNumberLabel = new System.Windows.Forms.Label();
-            this.questionsListBox = new System.Windows.Forms.ListBox();
             this.finalTabPage = new System.Windows.Forms.TabPage();
             this.resultPanel = new System.Windows.Forms.Panel();
             this.newButton = new System.Windows.Forms.Button();
@@ -60,6 +59,8 @@
             this.resultTestLabel = new System.Windows.Forms.Label();
             this.countTruAnswersLabel = new System.Windows.Forms.Label();
             this.fullNameFinalLabel = new System.Windows.Forms.Label();
+            this.questionsListBox = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programImageButton)).BeginInit();
             this.testerTabControl.SuspendLayout();
@@ -83,11 +84,11 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Controls.Add(this.fullScreenButton, 3, 0);
             this.tableLayoutPanel.Controls.Add(this.nameProgrammLabel, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.programImageButton, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.exitButton, 4, 0);
-            this.tableLayoutPanel.Controls.Add(this.turnButton, 2, 0);
+            this.tableLayoutPanel.Controls.Add(this.fullScreenButton, 2, 0);
+            this.tableLayoutPanel.Controls.Add(this.turnButton, 3, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -98,22 +99,6 @@
             this.tableLayoutPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Header_MouseDown);
             this.tableLayoutPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Header_MouseMove);
             this.tableLayoutPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Header_MouseUp);
-            // 
-            // fullScreenButton
-            // 
-            this.fullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.fullScreenButton.BackColor = System.Drawing.Color.Transparent;
-            this.fullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fullScreenButton.BackgroundImage")));
-            this.fullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.fullScreenButton.FlatAppearance.BorderSize = 0;
-            this.fullScreenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.fullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fullScreenButton.Location = new System.Drawing.Point(701, 5);
-            this.fullScreenButton.Name = "fullScreenButton";
-            this.fullScreenButton.Size = new System.Drawing.Size(30, 30);
-            this.fullScreenButton.TabIndex = 99;
-            this.fullScreenButton.UseVisualStyleBackColor = false;
-            this.fullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
             // 
             // nameProgrammLabel
             // 
@@ -155,6 +140,23 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // fullScreenButton
+            // 
+            this.fullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.fullScreenButton.BackColor = System.Drawing.Color.Transparent;
+            this.fullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fullScreenButton.BackgroundImage")));
+            this.fullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fullScreenButton.FlatAppearance.BorderSize = 0;
+            this.fullScreenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            this.fullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fullScreenButton.Location = new System.Drawing.Point(656, 5);
+            this.fullScreenButton.Name = "fullScreenButton";
+            this.fullScreenButton.Size = new System.Drawing.Size(30, 30);
+            this.fullScreenButton.TabIndex = 99;
+            this.fullScreenButton.UseVisualStyleBackColor = false;
+            this.fullScreenButton.Visible = false;
+            this.fullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
+            // 
             // turnButton
             // 
             this.turnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -164,7 +166,7 @@
             this.turnButton.FlatAppearance.BorderSize = 0;
             this.turnButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             this.turnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.turnButton.Location = new System.Drawing.Point(656, 5);
+            this.turnButton.Location = new System.Drawing.Point(701, 5);
             this.turnButton.Name = "turnButton";
             this.turnButton.Size = new System.Drawing.Size(30, 30);
             this.turnButton.TabIndex = 98;
@@ -214,6 +216,8 @@
             // testerPictureBox
             // 
             this.testerPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.testerPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("testerPictureBox.BackgroundImage")));
+            this.testerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.testerPictureBox.Location = new System.Drawing.Point(181, 3);
             this.testerPictureBox.Name = "testerPictureBox";
             this.testerPictureBox.Size = new System.Drawing.Size(244, 109);
@@ -291,12 +295,12 @@
             this.testingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.testingPanel.Controls.Add(this.questionsListBox);
             this.testingPanel.Controls.Add(this.answerTableLayoutPanel);
             this.testingPanel.Controls.Add(this.questionNumberLabel);
-            this.testingPanel.Controls.Add(this.questionsListBox);
-            this.testingPanel.Location = new System.Drawing.Point(30, 20);
+            this.testingPanel.Location = new System.Drawing.Point(30, 6);
             this.testingPanel.Name = "testingPanel";
-            this.testingPanel.Size = new System.Drawing.Size(700, 300);
+            this.testingPanel.Size = new System.Drawing.Size(700, 331);
             this.testingPanel.TabIndex = 1;
             // 
             // answerTableLayoutPanel
@@ -310,14 +314,14 @@
             this.answerTableLayoutPanel.Controls.Add(this.answer1RadioButton, 0, 0);
             this.answerTableLayoutPanel.Controls.Add(this.answer3RadioButton, 0, 2);
             this.answerTableLayoutPanel.Controls.Add(this.answer2RadioButton, 0, 1);
-            this.answerTableLayoutPanel.Location = new System.Drawing.Point(28, 140);
+            this.answerTableLayoutPanel.Location = new System.Drawing.Point(28, 131);
             this.answerTableLayoutPanel.Name = "answerTableLayoutPanel";
             this.answerTableLayoutPanel.RowCount = 4;
             this.answerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.answerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.answerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.answerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.answerTableLayoutPanel.Size = new System.Drawing.Size(654, 160);
+            this.answerTableLayoutPanel.Size = new System.Drawing.Size(654, 197);
             this.answerTableLayoutPanel.TabIndex = 3;
             // 
             // answer4RadioButton
@@ -327,67 +331,18 @@
             this.answer4RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answer4RadioButton.FlatAppearance.BorderSize = 0;
             this.answer4RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
-            this.answer4RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.answer4RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.answer4RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answer4RadioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.answer4RadioButton.Location = new System.Drawing.Point(3, 123);
+            this.answer4RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.answer4RadioButton.Location = new System.Drawing.Point(3, 150);
             this.answer4RadioButton.Name = "answer4RadioButton";
-            this.answer4RadioButton.Size = new System.Drawing.Size(573, 34);
+            this.answer4RadioButton.Size = new System.Drawing.Size(573, 44);
             this.answer4RadioButton.TabIndex = 7;
+            this.answer4RadioButton.Tag = "4";
             this.answer4RadioButton.Text = "Answer 4";
+            this.answer4RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.answer4RadioButton.UseVisualStyleBackColor = true;
-            // 
-            // answer3RadioButton
-            // 
-            this.answer3RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.answer3RadioButton.AutoSize = true;
-            this.answer3RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answer3RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer3RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
-            this.answer3RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.answer3RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answer3RadioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.answer3RadioButton.Location = new System.Drawing.Point(3, 83);
-            this.answer3RadioButton.Name = "answer3RadioButton";
-            this.answer3RadioButton.Size = new System.Drawing.Size(573, 34);
-            this.answer3RadioButton.TabIndex = 6;
-            this.answer3RadioButton.Text = "Answer 3";
-            this.answer3RadioButton.UseVisualStyleBackColor = true;
-            // 
-            // answer2RadioButton
-            // 
-            this.answer2RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.answer2RadioButton.AutoSize = true;
-            this.answer2RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answer2RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer2RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
-            this.answer2RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.answer2RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answer2RadioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.answer2RadioButton.Location = new System.Drawing.Point(3, 43);
-            this.answer2RadioButton.Name = "answer2RadioButton";
-            this.answer2RadioButton.Size = new System.Drawing.Size(573, 34);
-            this.answer2RadioButton.TabIndex = 5;
-            this.answer2RadioButton.Text = "Answer 2";
-            this.answer2RadioButton.UseVisualStyleBackColor = true;
-            // 
-            // answer1RadioButton
-            // 
-            this.answer1RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.answer1RadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.answer1RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answer1RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer1RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
-            this.answer1RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.answer1RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answer1RadioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.answer1RadioButton.Location = new System.Drawing.Point(3, 3);
-            this.answer1RadioButton.Name = "answer1RadioButton";
-            this.answer1RadioButton.Size = new System.Drawing.Size(573, 34);
-            this.answer1RadioButton.TabIndex = 4;
-            this.answer1RadioButton.Text = "Answer 1 111111111111111111111111111111111111111111111111111111111111111111111111" +
-    "11111gfdgfd";
-            this.answer1RadioButton.UseVisualStyleBackColor = true;
+            this.answer4RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // nextQuestionButton
             // 
@@ -396,34 +351,86 @@
             this.nextQuestionButton.FlatAppearance.BorderSize = 0;
             this.nextQuestionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.nextQuestionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextQuestionButton.Location = new System.Drawing.Point(582, 123);
+            this.nextQuestionButton.Location = new System.Drawing.Point(582, 160);
             this.nextQuestionButton.Name = "nextQuestionButton";
             this.nextQuestionButton.Size = new System.Drawing.Size(69, 34);
             this.nextQuestionButton.TabIndex = 2;
             this.nextQuestionButton.Text = "--->";
             this.nextQuestionButton.UseVisualStyleBackColor = false;
+            this.nextQuestionButton.Click += new System.EventHandler(this.nextQuestionButton_Click);
+            // 
+            // answer1RadioButton
+            // 
+            this.answer1RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.answer1RadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.answer1RadioButton.Checked = true;
+            this.answer1RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answer1RadioButton.FlatAppearance.BorderSize = 0;
+            this.answer1RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
+            this.answer1RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.answer1RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.answer1RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.answer1RadioButton.Location = new System.Drawing.Point(3, 3);
+            this.answer1RadioButton.Name = "answer1RadioButton";
+            this.answer1RadioButton.Size = new System.Drawing.Size(573, 43);
+            this.answer1RadioButton.TabIndex = 4;
+            this.answer1RadioButton.TabStop = true;
+            this.answer1RadioButton.Tag = "1";
+            this.answer1RadioButton.Text = "Answer 1";
+            this.answer1RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.answer1RadioButton.UseVisualStyleBackColor = true;
+            this.answer1RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            // 
+            // answer3RadioButton
+            // 
+            this.answer3RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.answer3RadioButton.AutoSize = true;
+            this.answer3RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answer3RadioButton.FlatAppearance.BorderSize = 0;
+            this.answer3RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
+            this.answer3RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.answer3RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.answer3RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.answer3RadioButton.Location = new System.Drawing.Point(3, 101);
+            this.answer3RadioButton.Name = "answer3RadioButton";
+            this.answer3RadioButton.Size = new System.Drawing.Size(573, 43);
+            this.answer3RadioButton.TabIndex = 6;
+            this.answer3RadioButton.Tag = "3";
+            this.answer3RadioButton.Text = "Answer 3";
+            this.answer3RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.answer3RadioButton.UseVisualStyleBackColor = true;
+            this.answer3RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            // 
+            // answer2RadioButton
+            // 
+            this.answer2RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.answer2RadioButton.AutoSize = true;
+            this.answer2RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answer2RadioButton.FlatAppearance.BorderSize = 0;
+            this.answer2RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
+            this.answer2RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.answer2RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.answer2RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.answer2RadioButton.Location = new System.Drawing.Point(3, 52);
+            this.answer2RadioButton.Name = "answer2RadioButton";
+            this.answer2RadioButton.Size = new System.Drawing.Size(573, 43);
+            this.answer2RadioButton.TabIndex = 5;
+            this.answer2RadioButton.Tag = "2";
+            this.answer2RadioButton.Text = "Answer 2";
+            this.answer2RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.answer2RadioButton.UseVisualStyleBackColor = true;
+            this.answer2RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // questionNumberLabel
             // 
             this.questionNumberLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionNumberLabel.AutoSize = true;
             this.questionNumberLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.questionNumberLabel.Location = new System.Drawing.Point(25, 5);
+            this.questionNumberLabel.Location = new System.Drawing.Point(28, 9);
             this.questionNumberLabel.Name = "questionNumberLabel";
             this.questionNumberLabel.Size = new System.Drawing.Size(104, 17);
             this.questionNumberLabel.TabIndex = 1;
             this.questionNumberLabel.Text = "Question # {null}";
-            // 
-            // questionsListBox
-            // 
-            this.questionsListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.questionsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.questionsListBox.FormattingEnabled = true;
-            this.questionsListBox.ItemHeight = 17;
-            this.questionsListBox.Location = new System.Drawing.Point(28, 25);
-            this.questionsListBox.Name = "questionsListBox";
-            this.questionsListBox.Size = new System.Drawing.Size(580, 106);
-            this.questionsListBox.TabIndex = 0;
             // 
             // finalTabPage
             // 
@@ -465,6 +472,7 @@
             this.newButton.TabIndex = 4;
             this.newButton.Text = "Сначала";
             this.newButton.UseVisualStyleBackColor = false;
+            this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
             // repeatButton
             // 
@@ -480,6 +488,7 @@
             this.repeatButton.TabIndex = 3;
             this.repeatButton.Text = "Повтор";
             this.repeatButton.UseVisualStyleBackColor = false;
+            this.repeatButton.Click += new System.EventHandler(this.repeatButton_Click);
             // 
             // resultTestLabel
             // 
@@ -518,15 +527,35 @@
             this.fullNameFinalLabel.Text = "Поздравляю {FullName} с пройденым тестом!";
             this.fullNameFinalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // questionsListBox
+            // 
+            this.questionsListBox.BackColor = System.Drawing.Color.White;
+            this.questionsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.questionsListBox.Location = new System.Drawing.Point(31, 29);
+            this.questionsListBox.Name = "questionsListBox";
+            this.questionsListBox.ReadOnly = true;
+            this.questionsListBox.Size = new System.Drawing.Size(573, 99);
+            this.questionsListBox.TabIndex = 4;
+            this.questionsListBox.Text = "";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(1, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(779, 40);
+            this.panel1.TabIndex = 6;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 421);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.testerTabControl);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -569,7 +598,6 @@
         private System.Windows.Forms.Button startTestButton;
         private System.Windows.Forms.Label errorRegistrationLabel;
         private System.Windows.Forms.Label questionNumberLabel;
-        private System.Windows.Forms.ListBox questionsListBox;
         private System.Windows.Forms.Label fullNameFinalLabel;
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.Label countTruAnswersLabel;
@@ -583,6 +611,8 @@
         private System.Windows.Forms.RadioButton answer1RadioButton;
         private System.Windows.Forms.RadioButton answer3RadioButton;
         private System.Windows.Forms.RadioButton answer2RadioButton;
+        private System.Windows.Forms.RichTextBox questionsListBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

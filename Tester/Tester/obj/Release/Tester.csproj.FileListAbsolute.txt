@@ -1,0 +1,9 @@
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\bin\Release\Tester.exe.config
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\bin\Release\Tester.exe
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\bin\Release\Tester.pdb
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.Main.resources
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.Properties.Resources.resources
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.csproj.GenerateResource.Cache
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.csproj.CoreCompileInputs.cache
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.exe
+C:\Users\Ruby\Documents\GitHub\TesterKnowledge\Tester\Tester\obj\Release\Tester.pdb
