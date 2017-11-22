@@ -6,7 +6,8 @@
         private string answer2;
         private string answer3;
         private string answer4;
-        private int trueAnswer;
+        private string trueAnswer;
+        private int trueAnswerNumber;
 
         internal string Answer1
         {
@@ -44,12 +45,21 @@
             }
         }
 
-        internal int TrueAnswer
+        internal string TrueAnswer
         {
             get { return trueAnswer; }
             set
             {
                 trueAnswer = value;
+            }
+        }
+
+        internal int TrueAnswerNumber
+        {
+            get { return trueAnswerNumber; }
+            set
+            {
+                trueAnswerNumber = value;
             }
         }
 

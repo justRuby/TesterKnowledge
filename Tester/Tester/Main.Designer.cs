@@ -46,6 +46,7 @@
             this.registrationTextBox = new System.Windows.Forms.TextBox();
             this.testingTabPage = new System.Windows.Forms.TabPage();
             this.testingPanel = new System.Windows.Forms.Panel();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.questionsListBox = new System.Windows.Forms.RichTextBox();
             this.answerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.answer4RadioButton = new System.Windows.Forms.RadioButton();
@@ -63,7 +64,7 @@
             this.fullNameFinalLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
+            this.backlightTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programImageButton)).BeginInit();
             this.testerTabControl.SuspendLayout();
@@ -196,7 +197,7 @@
             this.registrationTabPage.Location = new System.Drawing.Point(4, 22);
             this.registrationTabPage.Name = "registrationTabPage";
             this.registrationTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.registrationTabPage.Size = new System.Drawing.Size(761, 337);
+            this.registrationTabPage.Size = new System.Drawing.Size(761, 357);
             this.registrationTabPage.TabIndex = 0;
             this.registrationTabPage.Text = "Регистрация";
             this.registrationTabPage.UseVisualStyleBackColor = true;
@@ -305,11 +306,22 @@
             this.testingPanel.Size = new System.Drawing.Size(700, 351);
             this.testingPanel.TabIndex = 1;
             // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeLabel.Location = new System.Drawing.Point(27, 325);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(31, 17);
+            this.timeLabel.TabIndex = 7;
+            this.timeLabel.Text = "__:__";
+            // 
             // questionsListBox
             // 
             this.questionsListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionsListBox.BackColor = System.Drawing.Color.White;
             this.questionsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.questionsListBox.ForeColor = System.Drawing.Color.Black;
             this.questionsListBox.Location = new System.Drawing.Point(30, 20);
             this.questionsListBox.Name = "questionsListBox";
             this.questionsListBox.ReadOnly = true;
@@ -344,7 +356,7 @@
             this.answer4RadioButton.AutoSize = true;
             this.answer4RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answer4RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer4RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
+            this.answer4RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
             this.answer4RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.answer4RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answer4RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
@@ -352,7 +364,7 @@
             this.answer4RadioButton.Name = "answer4RadioButton";
             this.answer4RadioButton.Size = new System.Drawing.Size(573, 44);
             this.answer4RadioButton.TabIndex = 7;
-            this.answer4RadioButton.Tag = "4";
+            this.answer4RadioButton.Tag = "3";
             this.answer4RadioButton.Text = "Answer 4";
             this.answer4RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.answer4RadioButton.UseVisualStyleBackColor = true;
@@ -381,7 +393,6 @@
             this.answer1RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answer1RadioButton.FlatAppearance.BorderSize = 0;
             this.answer1RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
-            this.answer1RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.answer1RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answer1RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.answer1RadioButton.Location = new System.Drawing.Point(3, 3);
@@ -389,10 +400,10 @@
             this.answer1RadioButton.Size = new System.Drawing.Size(573, 43);
             this.answer1RadioButton.TabIndex = 4;
             this.answer1RadioButton.TabStop = true;
-            this.answer1RadioButton.Tag = "1";
+            this.answer1RadioButton.Tag = "0";
             this.answer1RadioButton.Text = "Answer 1";
             this.answer1RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.answer1RadioButton.UseVisualStyleBackColor = true;
+            this.answer1RadioButton.UseVisualStyleBackColor = false;
             this.answer1RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // answer3RadioButton
@@ -401,7 +412,7 @@
             this.answer3RadioButton.AutoSize = true;
             this.answer3RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answer3RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer3RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
+            this.answer3RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
             this.answer3RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.answer3RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answer3RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
@@ -409,7 +420,7 @@
             this.answer3RadioButton.Name = "answer3RadioButton";
             this.answer3RadioButton.Size = new System.Drawing.Size(573, 43);
             this.answer3RadioButton.TabIndex = 6;
-            this.answer3RadioButton.Tag = "3";
+            this.answer3RadioButton.Tag = "2";
             this.answer3RadioButton.Text = "Answer 3";
             this.answer3RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.answer3RadioButton.UseVisualStyleBackColor = true;
@@ -419,9 +430,10 @@
             // 
             this.answer2RadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.answer2RadioButton.AutoSize = true;
+            this.answer2RadioButton.BackColor = System.Drawing.Color.Transparent;
             this.answer2RadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.answer2RadioButton.FlatAppearance.BorderSize = 0;
-            this.answer2RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.DimGray;
+            this.answer2RadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
             this.answer2RadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.answer2RadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answer2RadioButton.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
@@ -429,10 +441,10 @@
             this.answer2RadioButton.Name = "answer2RadioButton";
             this.answer2RadioButton.Size = new System.Drawing.Size(573, 43);
             this.answer2RadioButton.TabIndex = 5;
-            this.answer2RadioButton.Tag = "2";
+            this.answer2RadioButton.Tag = "1";
             this.answer2RadioButton.Text = "Answer 2";
             this.answer2RadioButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.answer2RadioButton.UseVisualStyleBackColor = true;
+            this.answer2RadioButton.UseVisualStyleBackColor = false;
             this.answer2RadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // questionNumberLabel
@@ -452,7 +464,7 @@
             this.finalTabPage.Location = new System.Drawing.Point(4, 22);
             this.finalTabPage.Name = "finalTabPage";
             this.finalTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.finalTabPage.Size = new System.Drawing.Size(761, 337);
+            this.finalTabPage.Size = new System.Drawing.Size(761, 357);
             this.finalTabPage.TabIndex = 2;
             this.finalTabPage.Text = "Результат";
             this.finalTabPage.UseVisualStyleBackColor = true;
@@ -547,7 +559,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(784, 30);
+            this.panel1.Size = new System.Drawing.Size(784, 31);
             this.panel1.TabIndex = 6;
             // 
             // timer
@@ -555,15 +567,10 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // timeLabel
+            // backlightTimer
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeLabel.Location = new System.Drawing.Point(27, 325);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(31, 17);
-            this.timeLabel.TabIndex = 7;
-            this.timeLabel.Text = "__:__";
+            this.backlightTimer.Interval = 2000;
+            this.backlightTimer.Tick += new System.EventHandler(this.backlightTimer_Tick);
             // 
             // Main
             // 
@@ -635,6 +642,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Timer backlightTimer;
     }
 }
 

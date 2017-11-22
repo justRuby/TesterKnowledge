@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using Tester.Model;
 
@@ -11,8 +13,10 @@ namespace Tester
         private const int MAX_STEP = 25;
         private const int MAX_COUNT_ANSWERS = 4;
 
-        Dictionary<int, Questions> questions = new Dictionary<int, Questions>();
-        Dictionary<int, Answers> answers = new Dictionary<int, Answers>();
+
+        private Dictionary<int, Questions> questions = new Dictionary<int, Questions>();
+        private Dictionary<int, Answers> answers = new Dictionary<int, Answers>();
+        private string[] tempText = new string[MAX_COUNT_ANSWERS];
 
         private int step = 0;
         private int countTrue = 0;
@@ -119,22 +123,34 @@ namespace Tester
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
-            if (selectAnswer == answers[step].TrueAnswer)
+            int trueAnswer = 0;
+            if (tempText[selectAnswer].Equals(answers[step].TrueAnswer))
             {
                 countTrue++;
+                trueAnswer = selectAnswer;
             }
 
-            step++;
-
-            if (step <= MAX_STEP)
+            foreach (var item in answerTableLayoutPanel.Controls)
             {
-                ViewQuestionsAndAnswers();
+                if(item is RadioButton)
+                {
+                    (item as RadioButton).Checked = false;
+                    (item as RadioButton).Enabled = false;
+
+                    if ((item as RadioButton).Tag.ToString() == answers[step].TrueAnswerNumber.ToString())
+                    {
+                        (item as RadioButton).BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        (item as RadioButton).BackColor = Color.LightCoral;
+                    }
+                    
+                }
             }
 
-            if (step == MAX_STEP + 1)
-            {
-                Finally();
-            }
+            nextQuestionButton.Enabled = false;
+            backlightTimer.Start();
         }
 
         private void SetQuestionsAndAnswers()
@@ -147,10 +163,11 @@ namespace Tester
                 "которыми он манипулирует, исключая как вмешательство извне, так и неправильное использование данных.",
                 Answer2 = "это механизм программирования, объединяющий вместе код и облоко данных, " +
                 "которыми он манипулирует.",
-                Answer3 = "это механизм программирования, объединяющий вместе код и данные, " +
-                "которыми он манипулирует, исключая как вмешательство извне, так и неправильное использование данных.",
+                Answer3 = "это механизм программирования, объединяющий вместе код и данные, "
+                + "которыми он манипулирует, исключая как вмешательство извне, так и неправильное использование данных.",
                 Answer4 = "это что-то другое....",
-                TrueAnswer = 3
+                TrueAnswer = "это механизм программирования, объединяющий вместе код и данные, "
+                + "которыми он манипулирует, исключая как вмешательство извне, так и неправильное использование данных."
             });
             ///////Вопрос 2
             questions.Add(1, new Questions() { Question = "Наследование - это...." });
@@ -158,9 +175,9 @@ namespace Tester
             {
                 Answer1 = "это процесс, в ходе которого один объект приобретает свойства другого объекта.",
                 Answer2 = "это механизм, в ходе которого один объект получает свойства всех объектов.",
-                Answer3 = "это процесс, в ходе которого один объект приобретает свойства другого объекта.",
+                Answer3 = "это процесс, в ходе которого один объект приобретает свойства другого класса.",
                 Answer4 = "это что-то другое... того чего тут нету!",
-                TrueAnswer = 1
+                TrueAnswer = "это процесс, в ходе которого один объект приобретает свойства другого объекта."
             });
             ///////Вопрос 3
             questions.Add(2, new Questions() { Question = "абстрактный метод — это ......, который не предусматривает реализации по умолчанию, а предлагает только сигнатуру." });
@@ -170,7 +187,7 @@ namespace Tester
                 Answer2 = "член базового класса",
                 Answer3 = "аспект классов",
                 Answer4 = "это что-то другое....",
-                TrueAnswer = 2
+                TrueAnswer = "член базового класса"
             });
             ///////Вопрос 4
             questions.Add(3, new Questions() { Question = "Наследование обозначает способность языка ........... в сходной манере. "});
@@ -180,7 +197,7 @@ namespace Tester
                 Answer2 = "трактовать связанные объекты",
                 Answer3 = "конвертировать несвязанные объекты в другие объекты",
                 Answer4 = "конвертировать связанные объекты в другие объекты",
-                TrueAnswer = 2
+                TrueAnswer = "трактовать связанные объекты"
             });
             ///////Вопрос 4
             questions.Add(4, new Questions()
@@ -193,7 +210,7 @@ namespace Tester
                 Answer2 = "неадресуемая область памяти",
                 Answer3 = "объединенная область памяти",
                 Answer4 = "сокращаемая область памяти",
-                TrueAnswer = 1
+                TrueAnswer = "поименованная область памяти"
             });
             ///////Вопрос 5
             questions.Add(5, new Questions()
@@ -206,7 +223,7 @@ namespace Tester
                 Answer2 = "3",
                 Answer3 = "6",
                 Answer4 = "0",
-                TrueAnswer = 3
+                TrueAnswer = "6"
             });
             ///////Вопрос 6
             questions.Add(6, new Questions()
@@ -219,7 +236,7 @@ namespace Tester
                 Answer2 = "числовое, константное, объекта",
                 Answer3 = "числовое, константное, сериализированного",
                 Answer4 = "другое",
-                TrueAnswer = 1
+                TrueAnswer = "числовое, строковое, объекта"
             });
             ///////Вопрос 7
             questions.Add(7, new Questions()
@@ -232,7 +249,7 @@ namespace Tester
                 Answer2 = "false",
                 Answer3 = "возникнет ошибка на этапе компиляции",
                 Answer4 = "другое",
-                TrueAnswer = 3
+                TrueAnswer = "возникнет ошибка на этапе компиляции"
             });
             ///////Вопрос 8
             questions.Add(8, new Questions()
@@ -245,7 +262,7 @@ namespace Tester
                 Answer2 = "если строка часто изменяется",
                 Answer3 = "если строка содержит спецсимволы",
                 Answer4 = "если строка содержит исключительно цифры",
-                TrueAnswer = 2
+                TrueAnswer = "если строка часто изменяется"
             });
             ///////Вопрос 9
             questions.Add(9, new Questions()
@@ -258,7 +275,7 @@ namespace Tester
                 Answer2 = "++ --",
                 Answer3 = "-+ +-",
                 Answer4 = "(^_^)",
-                TrueAnswer = 2
+                TrueAnswer = "++ --"
             });
 
             ///////Вопрос 10
@@ -272,7 +289,7 @@ namespace Tester
                 Answer2 = "разницы нету, они несут одинаковый смысл",
                 Answer3 = "префиксные выполняются раньше префиксных",
                 Answer4 = "незнаю",
-                TrueAnswer = 2
+                TrueAnswer = "разницы нету, они несут одинаковый смысл"
             });
             ///////Вопрос 11
             questions.Add(11, new Questions()
@@ -285,7 +302,7 @@ namespace Tester
                 Answer2 = "это тоже самое что if else",
                 Answer3 = "что-то сложное, чего мы не проходили",
                 Answer4 = "он представляет собой условный оператор",
-                TrueAnswer = 4
+                TrueAnswer = "он представляет собой условный оператор"
             });
             ///////Вопрос 12
             questions.Add(12, new Questions()
@@ -298,7 +315,7 @@ namespace Tester
                 Answer2 = "логический, тернарный, цикл с постусловием, оперативный и т.п.",
                 Answer3 = "логический, тернарный, цикл с поступсловием, цикл c предусловием и т.п.",
                 Answer4 = "i don't know",
-                TrueAnswer = 3
+                TrueAnswer = "логический, тернарный, цикл с поступсловием, цикл c предусловием и т.п."
             });
             ///////Вопрос 13
             questions.Add(13, new Questions()
@@ -311,7 +328,7 @@ namespace Tester
                 Answer2 = "for, foreach, while, do while",
                 Answer3 = "for и большего не дано",
                 Answer4 = "for, foreach, if while, do else",
-                TrueAnswer = 2
+                TrueAnswer = "for, foreach, while, do while"
             });
             ///////Вопрос 14
             questions.Add(14, new Questions()
@@ -324,7 +341,7 @@ namespace Tester
                 Answer2 = "совокупность переменных разного типа",
                 Answer3 = "совокупность переменных статичного типа",
                 Answer4 = "совокупность переменных динамичного типа",
-                TrueAnswer = 1
+                TrueAnswer = "совокупность переменных одного типа"
             });
             ///////Вопрос 15
             questions.Add(15, new Questions()
@@ -337,7 +354,7 @@ namespace Tester
                 Answer2 = "только одномерными",
                 Answer3 = "одномерными и многомерными",
                 Answer4 = "только двумерными",
-                TrueAnswer = 3
+                TrueAnswer = "одномерными и многомерными"
             });
             ///////Вопрос 16
             questions.Add(16, new Questions()
@@ -350,7 +367,7 @@ namespace Tester
                 Answer2 = "String, Decimal, StringBuilder",
                 Answer3 = "String, Char, StringBuilder",
                 Answer4 = "String , Char",
-                TrueAnswer = 3
+                TrueAnswer = "String, Decimal, StringBuilder"
             });
             ///////Вопрос 17
             questions.Add(17, new Questions()
@@ -363,7 +380,7 @@ namespace Tester
                 Answer2 = "инфология программирования, основанная на представлении системы в виде совокупности методов",
                 Answer3 = "ксеология Объектно ориентированного программирования системы в виде совокупности методов",
                 Answer4 = "Объектно ориентированное программирование",
-                TrueAnswer = 1
+                TrueAnswer = "методология программирования, основанная на представлении программы в виде совокупности объектов"
             });
             ///////Вопрос 18
             questions.Add(18, new Questions()
@@ -376,7 +393,7 @@ namespace Tester
                 Answer2 = "ссылки",
                 Answer3 = "технологии",
                 Answer4 = "объекта",
-                TrueAnswer = 4
+                TrueAnswer = "объекта"
             });
             ///////Вопрос 19
             questions.Add(19, new Questions()
@@ -389,7 +406,7 @@ namespace Tester
                 Answer2 = "который неявно считается базовым классом для всех остальных классов и типов",
                 Answer3 = "который явно считается статичным классом для всех остальных классов и типов",
                 Answer4 = "который неявно считается динамичным классом для всех остальных классов и типов",
-                TrueAnswer = 2
+                TrueAnswer = "который неявно считается базовым классом для всех остальных классов и типов"
             });
             ///////Вопрос 20
             questions.Add(20, new Questions()
@@ -399,10 +416,10 @@ namespace Tester
             answers.Add(20, new Answers()
             {
                 Answer1 = "private, public, static, internal",
-                Answer2 = "private, public, internal, static",
+                Answer2 = "class, public, internal, static",
                 Answer3 = "private, public, internal",
                 Answer4 = "нету верных ответов",
-                TrueAnswer = 4
+                TrueAnswer = "нету верных ответов"
             });
             ///////Вопрос 21
             questions.Add(21, new Questions()
@@ -415,7 +432,7 @@ namespace Tester
                 Answer2 = "набор статичных классов",
                 Answer3 = "набор не статичных переменных",
                 Answer4 = "набор слов",
-                TrueAnswer = 1
+                TrueAnswer = "набор абстрактных методов"
             });
             ///////Вопрос 22
             questions.Add(22, new Questions()
@@ -428,7 +445,7 @@ namespace Tester
                 Answer2 = "метод ссылающийся на метод",
                 Answer3 = "статичный метод ссылающийся на метод",
                 Answer4 = "статичный объект ссылающийся на не статичный метод",
-                TrueAnswer = 1
+                TrueAnswer = "объект ссылающийся на метод"
             });
             ///////Вопрос 23
             questions.Add(23, new Questions()
@@ -441,7 +458,7 @@ namespace Tester
                 Answer2 = "автоматическое уведомление о том, что произошло несколько действий в делегате",
                 Answer3 = "уведомление о том, что произошло некоторое действие",
                 Answer4 = "статичное уведомление о том, что произошла ошибка",
-                TrueAnswer = 3
+                TrueAnswer = "уведомление о том, что произошло некоторое действие"
             });
             ///////Вопрос 24
             questions.Add(24, new Questions()
@@ -454,7 +471,7 @@ namespace Tester
                 Answer2 = "Класс поддераживающий статичный массив",
                 Answer3 = "Класс поддерживающий динамические массивы",
                 Answer4 = "Объект ссылающийся на метод",
-                TrueAnswer = 3
+                TrueAnswer = "Класс поддерживающий динамические массивы"
             });
             ///////Вопрос 25
             questions.Add(25, new Questions()
@@ -467,7 +484,7 @@ namespace Tester
                 Answer2 = "сортировки методов",
                 Answer3 = "сложение объектов",
                 Answer4 = "сравнивание методов",
-                TrueAnswer = 1
+                TrueAnswer = "сортировки объектов"
             });
         }
 
@@ -476,10 +493,39 @@ namespace Tester
             questionNumberLabel.Text = string.Format("Вопрос {0} из {1}", step, MAX_STEP);
             questionsListBox.Clear();
             questionsListBox.Text = questions[step].Question;
-            answer1RadioButton.Text = answers[step].Answer1;
-            answer2RadioButton.Text = answers[step].Answer2;
-            answer3RadioButton.Text = answers[step].Answer3;
-            answer4RadioButton.Text = answers[step].Answer4;
+            RandomizeAnswers();
+        }
+
+        private void RandomizeAnswers()
+        {
+            Random r = new Random(0);
+
+            tempText[0] = answers[step].Answer1;
+            tempText[1] = answers[step].Answer2;
+            tempText[2] = answers[step].Answer3;
+            tempText[3] = answers[step].Answer4;
+
+            for (int i = 0; i < MAX_COUNT_ANSWERS; i++)
+            {
+                int j = r.Next(0, 4);
+                string temp = tempText[i];
+                tempText[i] = tempText[j];
+                tempText[j] = temp;
+            }
+
+            answer1RadioButton.Text = tempText[0];
+            answer2RadioButton.Text = tempText[1];
+            answer3RadioButton.Text = tempText[2];
+            answer4RadioButton.Text = tempText[3];
+
+            for (int i = 0; i < MAX_COUNT_ANSWERS; i++)
+            {
+                if(tempText[i] == answers[step].TrueAnswer)
+                {
+                    answers[step].TrueAnswerNumber = i;
+                    break;
+                }
+            }
         }
 
         private void Finally()
@@ -495,6 +541,15 @@ namespace Tester
         {
             string temp = (sender as RadioButton).Tag.ToString();
             selectAnswer = int.Parse(temp);
+
+            if((sender as RadioButton).Checked == true)
+            {
+                (sender as RadioButton).FlatAppearance.MouseOverBackColor = Color.Empty;
+            }
+            else
+            {
+                (sender as RadioButton).FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            }
         }
 
         private void repeatButton_Click(object sender, EventArgs e)
@@ -514,6 +569,7 @@ namespace Tester
         {
             step = 0;
             countTrue = 0;
+            countTime = 1200;
             ViewQuestionsAndAnswers();
         }
 
@@ -531,6 +587,33 @@ namespace Tester
             countTime--;
             var time = TimeSpan.FromSeconds(countTime);
             timeLabel.Text = string.Format("{0}:{1}", time.Minutes, time.Seconds);
+        }
+
+        private void backlightTimer_Tick(object sender, EventArgs e)
+        {
+            nextQuestionButton.Enabled = true;
+            answer1RadioButton.Checked = true;
+            foreach (var item in answerTableLayoutPanel.Controls)
+            {
+                if (item is RadioButton)
+                {
+                    (item as RadioButton).BackColor = Color.Transparent;
+                    (item as RadioButton).Enabled = true;
+                }
+            }
+
+            step++;
+
+            if (step <= MAX_STEP)
+            {
+                ViewQuestionsAndAnswers();
+            }
+
+            if (step == MAX_STEP + 1)
+            {
+                Finally();
+            }
+            backlightTimer.Stop();
         }
     }
 }
