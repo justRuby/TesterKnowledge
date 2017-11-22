@@ -123,11 +123,9 @@ namespace Tester
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
-            int trueAnswer = 0;
             if (tempText[selectAnswer].Equals(answers[step].TrueAnswer))
             {
                 countTrue++;
-                trueAnswer = selectAnswer;
             }
 
             foreach (var item in answerTableLayoutPanel.Controls)
@@ -289,7 +287,7 @@ namespace Tester
                 Answer2 = "разницы нету, они несут одинаковый смысл",
                 Answer3 = "префиксные выполняются раньше префиксных",
                 Answer4 = "незнаю",
-                TrueAnswer = "разницы нету, они несут одинаковый смысл"
+                TrueAnswer = "постфиксные выполняются сразу в отличие от префиксных"
             });
             ///////Вопрос 11
             questions.Add(11, new Questions()
@@ -367,7 +365,7 @@ namespace Tester
                 Answer2 = "String, Decimal, StringBuilder",
                 Answer3 = "String, Char, StringBuilder",
                 Answer4 = "String , Char",
-                TrueAnswer = "String, Decimal, StringBuilder"
+                TrueAnswer = "String, Char, StringBuilder"
             });
             ///////Вопрос 17
             questions.Add(17, new Questions()
@@ -417,7 +415,7 @@ namespace Tester
             {
                 Answer1 = "private, public, static, internal",
                 Answer2 = "class, public, internal, static",
-                Answer3 = "private, public, internal",
+                Answer3 = "private, public, magic",
                 Answer4 = "нету верных ответов",
                 TrueAnswer = "нету верных ответов"
             });
@@ -498,7 +496,7 @@ namespace Tester
 
         private void RandomizeAnswers()
         {
-            Random r = new Random(0);
+            Random r = new Random();
 
             tempText[0] = answers[step].Answer1;
             tempText[1] = answers[step].Answer2;
