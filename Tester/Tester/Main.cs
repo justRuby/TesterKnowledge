@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using Tester.Model;
 
@@ -12,7 +10,6 @@ namespace Tester
     {
         private const int MAX_STEP = 25;
         private const int MAX_COUNT_ANSWERS = 4;
-
 
         private Dictionary<int, Questions> questions = new Dictionary<int, Questions>();
         private Dictionary<int, Answers> answers = new Dictionary<int, Answers>();
@@ -197,7 +194,7 @@ namespace Tester
                 Answer4 = "конвертировать связанные объекты в другие объекты",
                 TrueAnswer = "трактовать связанные объекты"
             });
-            ///////Вопрос 4
+            ///////Вопрос 5
             questions.Add(4, new Questions()
             {
                 Question = "Что такое переменная?"
@@ -210,7 +207,7 @@ namespace Tester
                 Answer4 = "сокращаемая область памяти",
                 TrueAnswer = "поименованная область памяти"
             });
-            ///////Вопрос 5
+            ///////Вопрос 6
             questions.Add(5, new Questions()
             {
                 Question = "Сколько типо данных существует в языке программирования C#?"
@@ -223,7 +220,7 @@ namespace Tester
                 Answer4 = "0",
                 TrueAnswer = "6"
             });
-            ///////Вопрос 6
+            ///////Вопрос 7
             questions.Add(6, new Questions()
             {
                 Question = "Переменная представляет собой ...... или ..... значение или ..... класса."
@@ -236,7 +233,7 @@ namespace Tester
                 Answer4 = "другое",
                 TrueAnswer = "числовое, строковое, объекта"
             });
-            ///////Вопрос 7
+            ///////Вопрос 8
             questions.Add(7, new Questions()
             {
                 Question = "bool? b1 = true;\nbool b2 = false;\nb2 = b1;"
@@ -249,7 +246,7 @@ namespace Tester
                 Answer4 = "другое",
                 TrueAnswer = "возникнет ошибка на этапе компиляции"
             });
-            ///////Вопрос 8
+            ///////Вопрос 9
             questions.Add(8, new Questions()
             {
                 Question = "Когда и почему использовать StringBuilder предпочтительнее чем string?"
@@ -262,7 +259,7 @@ namespace Tester
                 Answer4 = "если строка содержит исключительно цифры",
                 TrueAnswer = "если строка часто изменяется"
             });
-            ///////Вопрос 9
+            ///////Вопрос 10
             questions.Add(9, new Questions()
             {
                 Question = "Как происходит запись инкремента и декремента?"
@@ -276,7 +273,7 @@ namespace Tester
                 TrueAnswer = "++ --"
             });
 
-            ///////Вопрос 10
+            ///////Вопрос 11
             questions.Add(10, new Questions()
             {
                 Question = "В чем разницы между постфиксными и префиксными операциями инкремента и декремента?"
@@ -289,7 +286,7 @@ namespace Tester
                 Answer4 = "незнаю",
                 TrueAnswer = "постфиксные выполняются сразу в отличие от префиксных"
             });
-            ///////Вопрос 11
+            ///////Вопрос 12
             questions.Add(11, new Questions()
             {
                 Question = "Что такое тернарная операция?"
@@ -302,7 +299,7 @@ namespace Tester
                 Answer4 = "он представляет собой условный оператор",
                 TrueAnswer = "он представляет собой условный оператор"
             });
-            ///////Вопрос 12
+            ///////Вопрос 13
             questions.Add(12, new Questions()
             {
                 Question = "Какие операторы вы знаете?"
@@ -315,7 +312,7 @@ namespace Tester
                 Answer4 = "i don't know",
                 TrueAnswer = "логический, тернарный, цикл с поступсловием, цикл c предусловием и т.п."
             });
-            ///////Вопрос 13
+            ///////Вопрос 14
             questions.Add(13, new Questions()
             {
                 Question = "Какие операторы цикла вы знаете?"
@@ -328,7 +325,7 @@ namespace Tester
                 Answer4 = "for, foreach, if while, do else",
                 TrueAnswer = "for, foreach, while, do while"
             });
-            ///////Вопрос 14
+            ///////Вопрос 15
             questions.Add(14, new Questions()
             {
                 Question = "Что такое массив?"
@@ -341,7 +338,7 @@ namespace Tester
                 Answer4 = "совокупность переменных динамичного типа",
                 TrueAnswer = "совокупность переменных одного типа"
             });
-            ///////Вопрос 15
+            ///////Вопрос 16
             questions.Add(15, new Questions()
             {
                 Question = "Какими массивы бывают?"
@@ -354,7 +351,7 @@ namespace Tester
                 Answer4 = "только двумерными",
                 TrueAnswer = "одномерными и многомерными"
             });
-            ///////Вопрос 16
+            ///////Вопрос 17
             questions.Add(16, new Questions()
             {
                 Question = "Перечислите классы библиотеки .NET для обработки строк в языке C#."
@@ -367,7 +364,7 @@ namespace Tester
                 Answer4 = "String , Char",
                 TrueAnswer = "String, Char, StringBuilder"
             });
-            ///////Вопрос 17
+            ///////Вопрос 18
             questions.Add(17, new Questions()
             {
                 Question = "ООП это...."
@@ -380,7 +377,7 @@ namespace Tester
                 Answer4 = "Объектно ориентированное программирование",
                 TrueAnswer = "методология программирования, основанная на представлении программы в виде совокупности объектов"
             });
-            ///////Вопрос 18
+            ///////Вопрос 19
             questions.Add(18, new Questions()
             {
                 Question = "Класс представляет собой шаблон, по которому определяется форма......"
@@ -393,7 +390,7 @@ namespace Tester
                 Answer4 = "объекта",
                 TrueAnswer = "объекта"
             });
-            ///////Вопрос 19
+            ///////Вопрос 20
             questions.Add(19, new Questions()
             {
                 Question = "Класс Object....."
@@ -406,7 +403,7 @@ namespace Tester
                 Answer4 = "который неявно считается динамичным классом для всех остальных классов и типов",
                 TrueAnswer = "который неявно считается базовым классом для всех остальных классов и типов"
             });
-            ///////Вопрос 20
+            ///////Вопрос 21
             questions.Add(20, new Questions()
             {
                 Question = "Какие режимы доступа существуют?"
@@ -419,7 +416,7 @@ namespace Tester
                 Answer4 = "нету верных ответов",
                 TrueAnswer = "нету верных ответов"
             });
-            ///////Вопрос 21
+            ///////Вопрос 22
             questions.Add(21, new Questions()
             {
                 Question = "Что такое интерфейс?"
@@ -432,7 +429,7 @@ namespace Tester
                 Answer4 = "набор слов",
                 TrueAnswer = "набор абстрактных методов"
             });
-            ///////Вопрос 22
+            ///////Вопрос 23
             questions.Add(22, new Questions()
             {
                 Question = "Делегат это...."
@@ -445,7 +442,7 @@ namespace Tester
                 Answer4 = "статичный объект ссылающийся на не статичный метод",
                 TrueAnswer = "объект ссылающийся на метод"
             });
-            ///////Вопрос 23
+            ///////Вопрос 24
             questions.Add(23, new Questions()
             {
                 Question = "Событие это...."
@@ -458,7 +455,7 @@ namespace Tester
                 Answer4 = "статичное уведомление о том, что произошла ошибка",
                 TrueAnswer = "уведомление о том, что произошло некоторое действие"
             });
-            ///////Вопрос 24
+            ///////Вопрос 25
             questions.Add(24, new Questions()
             {
                 Question = "ArrayList это что?"
@@ -471,7 +468,7 @@ namespace Tester
                 Answer4 = "Объект ссылающийся на метод",
                 TrueAnswer = "Класс поддерживающий динамические массивы"
             });
-            ///////Вопрос 25
+            ///////Вопрос 26
             questions.Add(25, new Questions()
             {
                 Question = "ICompare это интерфейс ......."
@@ -488,7 +485,7 @@ namespace Tester
 
         private void ViewQuestionsAndAnswers()
         {
-            questionNumberLabel.Text = string.Format("Вопрос {0} из {1}", step, MAX_STEP);
+            questionNumberLabel.Text = string.Format("Вопрос {0} из {1}", step + 1, MAX_STEP + 1);
             questionsListBox.Clear();
             questionsListBox.Text = questions[step].Question;
             RandomizeAnswers();
@@ -529,16 +526,15 @@ namespace Tester
         private void Finally()
         {
             fullNameFinalLabel.Text = string.Format("Поздравляю {0} с пройденым тестом!", registrationTextBox.Text);
-            countTruAnswersLabel.Text = string.Format("Кол-во правильных ответов {0} из {1}", countTrue, MAX_STEP);
-            double temp = Math.Round((float)countTrue / (float)MAX_STEP * 100f);
+            countTruAnswersLabel.Text = string.Format("Кол-во правильных ответов {0} из {1}", countTrue, MAX_STEP + 1);
+            double temp = Math.Round((float)countTrue / (float)(MAX_STEP + 1) * 100f);
             resultTestLabel.Text = "Ваш результат: " + temp.ToString() + "%";
             testerTabControl.SelectedIndex = 2;
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            string temp = (sender as RadioButton).Tag.ToString();
-            selectAnswer = int.Parse(temp);
+            selectAnswer = int.Parse((sender as RadioButton).Tag.ToString());
 
             if((sender as RadioButton).Checked == true)
             {
@@ -574,10 +570,6 @@ namespace Tester
         private void timer_Tick(object sender, EventArgs e)
         {
             SetTimeLeft();
-            if (countTime <= 0)
-            {
-                Finally();
-            }
         }
         
         private void SetTimeLeft()
@@ -585,6 +577,11 @@ namespace Tester
             countTime--;
             var time = TimeSpan.FromSeconds(countTime);
             timeLabel.Text = string.Format("{0}:{1}", time.Minutes, time.Seconds);
+
+            if (countTime <= 0)
+            {
+                Finally();
+            }
         }
 
         private void backlightTimer_Tick(object sender, EventArgs e)
